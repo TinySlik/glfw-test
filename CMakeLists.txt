@@ -1,10 +1,11 @@
-project(OpenGL_1)  
+project(OpenGLTest)  
 cmake_minimum_required(VERSION 2.8)  
 aux_source_directory(. SRC_LIST)  
 LINK_LIBRARIES(glfw3)
 LINK_LIBRARIES(GL) 
 LINK_LIBRARIES(dl)
 LINK_LIBRARIES(GLU) 
+LINK_LIBRARIES(glut)
 LINK_LIBRARIES(X11)  
 LINK_LIBRARIES(Xxf86vm)  
 LINK_LIBRARIES(Xrandr)  
@@ -15,4 +16,5 @@ LINK_LIBRARIES(Xinerama)
  
  
 add_executable(${PROJECT_NAME} ${SRC_LIST})  
+
 

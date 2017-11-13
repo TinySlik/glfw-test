@@ -89,4 +89,6 @@ CMakeLists.txt.user
 *.dSYM/
 *.su
 
+OpenGLTest
+
 
