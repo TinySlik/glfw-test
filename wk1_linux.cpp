@@ -96,6 +96,42 @@ int main( int argc, char** argv )
 
 #include <GLFW/glfw3.h>
 
+const int glWindowWidth = 640;
+const int glWindowHeight = 480;
+
+void display( void )
+{
+    // clear all pixels
+    glClear( GL_COLOR_BUFFER_BIT );
+    glClearColor(1,0,0,1);
+    glBegin(GL_LINES);
+        glVertex3f(0,0,0);
+        glVertex3f(200,100,0);
+    glEnd();
+    // keep showing( flushing ) line on the screen instead of showing just once.
+    //glFlush();
+    // glutPostRedisplay();
+}
+
+void init( void )
+{
+    // select clearing color
+    glClearColor(1,0,0,1);
+
+    glViewport(0,0,glWindowWidth,glWindowHeight);
+    //! 
+    
+    glMatrixMode(GL_PROJECTION);
+
+    glLoadIdentity();
+    glOrtho(0,glWindowWidth,glWindowHeight,0,-100,100);
+
+    // initialize viewing values
+    //glMatrixMode( GL_PROJECTION );
+    //glLoadIdentity();
+    //gluOrtho2D( 0,500,0,500 );
+}
+
 int main(void)
 {
     GLFWwindow* window;
@@ -105,7 +141,7 @@ int main(void)
         return -1;
 
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(480, 320, "Hello World", NULL, NULL);
+    window = glfwCreateWindow(glWindowWidth, glWindowHeight, "Hello World", NULL, NULL);
     if (!window)
     {
         glfwTerminate();
@@ -115,22 +151,11 @@ int main(void)
     /* Make the window's context current */
     glfwMakeContextCurrent(window);
 
+    init();
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
-        /* Draw a triangle */
-        glBegin(GL_TRIANGLES);
-
-        glColor3f(1.0, 0.0, 0.0);    // Red
-        glVertex3f(0.0, 1.0, 0.0);
-
-        glColor3f(0.0, 1.0, 0.0);    // Green
-        glVertex3f(-1.0, -1.0, 0.0);
-
-        glColor3f(0.0, 0.0, 1.0);    // Blue
-        glVertex3f(1.0, -1.0, 0.0);
-
-        glEnd();
+        display();
 
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
