@@ -95,6 +95,8 @@ int main( int argc, char** argv )
 */
 
 #include <GLFW/glfw3.h>
+#include <GL/glut.h>
+#include <GL/glu.h>
 
 const int glWindowWidth = 640;
 const int glWindowHeight = 480;
@@ -103,10 +105,17 @@ void display( void )
 {
     // clear all pixels
     glClear( GL_COLOR_BUFFER_BIT );
-    glClearColor(1,0,0,1);
-    glBegin(GL_LINES);
-        glVertex3f(0,0,0);
-        glVertex3f(200,100,0);
+    glClearColor(.8f,.8f,.8f,1);
+    //glColor3f(0,1,1);
+    glBegin(GL_TRIANGLES);
+        glColor3f(1.0, 0.0, 0.0);    // Red
+        glVertex3f(0.0, 1.0, 0.0);
+
+        glColor3f(0.0, 1.0, 0.0);    // Green
+        glVertex3f(0.0, glWindowHeight, 0.0);
+
+        glColor3f(0.0, 0.0, 1.0);    // Blue
+        glVertex3f(glWindowWidth, 0.0, 0.0);
     glEnd();
     // keep showing( flushing ) line on the screen instead of showing just once.
     //glFlush();
@@ -141,7 +150,7 @@ int main(void)
         return -1;
 
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(glWindowWidth, glWindowHeight, "Hello World", NULL, NULL);
+    window = glfwCreateWindow(glWindowWidth, glWindowHeight, "Tiny Oh Toy 1", NULL, NULL);
     if (!window)
     {
         glfwTerminate();
