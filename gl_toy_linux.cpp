@@ -740,7 +740,7 @@ int main(int argc, char *argv[])
 
 #endif
 
-#if 0
+#if 1
 /* nuklear - v1.05 - public domain */
 #include <stdio.h>
 #include <stdlib.h>
@@ -1649,7 +1649,7 @@ int main(int argc, char *argv[])
 #endif
 
 
-#if 1
+#if 0
 
 /* nuklear - v1.05 - public domain */
 #include <stdio.h>
